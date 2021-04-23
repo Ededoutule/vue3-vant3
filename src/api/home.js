@@ -23,3 +23,11 @@ export function getSearchListData(params) {
 		},
 	})
 }
+
+export function getGoodsList(params) {
+	return internal({
+		url: `/goods/list`,
+		method: 'get',
+		params,
+	})
+}

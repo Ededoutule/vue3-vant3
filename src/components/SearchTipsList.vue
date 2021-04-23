@@ -1,7 +1,12 @@
 <template>
 	<div class="container">
 		<van-list :finished="finished" finished-text="没有更多了">
-			<van-cell v-for="(item, index) in searchTipsList" :key="index" :title="item" />
+			<van-cell
+				v-for="(item, index) in searchTipsList"
+				:key="index"
+				:title="item"
+				@click="tipsItem(item)"
+			/>
 		</van-list>
 	</div>
 </template>
@@ -16,14 +21,17 @@ export default {
 			type: Array,
 		},
 	},
-	setup() {
+	setup(prop, { emit }) {
 		const state = reactive({
-			list: [1, 2, 3, 45],
 			finished: true,
 		})
 		const refData = toRefs(state)
+		const tipsItem = (item) => {
+			emit('tipsItem', item)
+		}
 		return {
 			...refData,
+			tipsItem,
 		}
 	},
 }

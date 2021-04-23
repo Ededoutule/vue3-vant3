@@ -2,21 +2,24 @@
 	<div class="Page">
 		<van-loading v-if="Object.keys(placeholder).length < 1" size="24px" vertical>
 			{{ Object.keys(placeholder).length }}
-			加载中... 23123
+			加载中...
 		</van-loading>
 		<div v-else>
-			<van-search
-				v-model="searchVal"
-				show-action
-				:placeholder="
-					placeholder.defaultKeyword
-						? placeholder.defaultKeyword.keyword
-						: '请输入搜索关键词'
-				"
-				@search="onSearch"
-				@cancel="onCancel"
-				@update:model-value="onUpdata"
-			/>
+			<van-sticky>
+				<van-search
+					v-model="searchVal"
+					show-action
+					:placeholder="
+						placeholder.defaultKeyword
+							? placeholder.defaultKeyword.keyword
+							: '请输入搜索关键词'
+					"
+					@search="onSearch"
+					@cancel="onCancel"
+					@update:model-value="onUpdata"
+					@clear="onClear"
+				/>
+			</van-sticky>
 			<!-- 组件1 -->
 			<div v-if="showType === 1">
 				<HistoryKeywordList
@@ -37,14 +40,16 @@
 				</HistoryKeywordList>
 			</div>
 			<!-- 组件2 -->
-
 			<SearchTipsList
 				v-else-if="showType === 2"
 				:searchTipsList="searchTipsList"
+				@tipsItem="tipsItem"
 			></SearchTipsList>
 
 			<!-- 组件3 -->
-			<div v-else></div>
+			<div v-else>
+				<SearchProbuct :searchVal="searchVal"></SearchProbuct>
+			</div>
 		</div>
 	</div>
 </template>
@@ -57,6 +62,7 @@ import { getSearch, getSearchListData } from '@/api/home.js'
 
 import HistoryKeywordList from '@/components/HistoryKeywordList'
 import SearchTipsList from '@/components/SearchTipsList'
+import SearchProbuct from '@/components/SearchProduct'
 
 export default {
 	setup() {
@@ -67,9 +73,6 @@ export default {
 		const router = useRouter()
 		const showType = ref(1)
 
-		// watch(searchVal.value, ()=> {
-
-		// })
 		onMounted(async () => {
 			try {
 				let res = await getSearch()
@@ -82,9 +85,22 @@ export default {
 		})
 
 		const seacrhItem = (item) => {
-			console.log(item)
+			searchVal.value = item
+			showType.value = 3
 		}
-		const onSearch = () => {}
+
+		const tipsItem = (item) => {
+			searchVal.value = item
+			showType.value = 3
+		}
+
+		const onSearch = () => {
+			showType.value = 3
+		}
+		const onClear = () => {
+			console.log('清楚')
+			showType.value = 3
+		}
 		const onUpdata = async () => {
 			let res = await getSearchListData(searchVal.value)
 			if (res.status === 200) {
@@ -106,11 +122,14 @@ export default {
 			showType,
 			onUpdata,
 			searchTipsList,
+			tipsItem,
+			onClear,
 		}
 	},
 	components: {
 		HistoryKeywordList,
 		SearchTipsList,
+		SearchProbuct,
 	},
 }
 </script>
@@ -122,8 +141,8 @@ export default {
 	left: 0;
 	top: 0;
 	width: 100%;
-	height: 100%;
-	background-color: rgb(253, 252, 252);
+	min-height: 100%;
+	background-color: rgb(208, 201, 201);
 	::v-deep .van-loading {
 		top: 40%;
 	}

@@ -2,8 +2,24 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
-import { Button, Icon, Search, Toast, Loading, Swipe, SwipeItem, Col, Row, List, Cell } from 'vant'
-
+import {
+	Button,
+	Icon,
+	Search,
+	Toast,
+	Loading,
+	Swipe,
+	SwipeItem,
+	Col,
+	Row,
+	List,
+	Cell,
+	Lazyload,
+	Empty,
+} from 'vant'
+import { DropdownMenu, DropdownItem } from 'vant'
+import { PullRefresh } from 'vant'
+import { Sticky } from 'vant'
 import 'normalize.css'
 
 const app = createApp(App)
@@ -18,5 +34,11 @@ app.use(Button)
 	.use(Row)
 	.use(List)
 	.use(Cell)
+	.use(DropdownMenu)
+	.use(DropdownItem)
+	.use(PullRefresh)
+	.use(Sticky)
+	.use(Lazyload)
+	.use(Empty)
 
 app.use(store).use(router).use(Toast).mount('#app')

@@ -25,7 +25,7 @@
 	</div>
 </template>
 
-<script lang="ts">
+<script>
 import { reactive, toRefs } from 'vue'
 export default {
 	name: 'App',
