@@ -8,7 +8,6 @@
 				:options="priceOption"
 				@change="orderChange"
 			/>
-
 			<van-dropdown-item
 				v-model="params.categoryId"
 				:options="filterCategory"
@@ -113,17 +112,11 @@ export default {
 				if (params.page - 1 >= res.totalPages) {
 					data.finished = true
 				}
+				params.page += 1
 			}
 		}
-		const onLoad = async () => {
-			console.log('下拉加载')
-			try {
-				getList()
-				params.page = params.page + 1
-			} finally {
-				// data.loading = false
-				// console.log('onLoading', params.page)
-			}
+		const onLoad = () => {
+			getList()
 		}
 
 		return {

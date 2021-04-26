@@ -12,6 +12,7 @@ const routes = [
 		component: Home,
 		meta: {
 			show: true,
+			index: 0,
 		},
 		children: [
 			{
@@ -30,6 +31,7 @@ const routes = [
 		component: () => import('../views/Shop/index.vue'),
 		meta: {
 			show: true,
+			index: 1,
 		},
 	},
 	{
@@ -38,6 +40,7 @@ const routes = [
 		component: () => import('../views/Cart/index.vue'),
 		meta: {
 			show: true,
+			index: 2,
 		},
 	},
 	{
@@ -46,6 +49,7 @@ const routes = [
 		component: () => import('../views/Content/index.vue'),
 		meta: {
 			show: true,
+			index: 3,
 		},
 	},
 
@@ -64,4 +68,9 @@ const router = createRouter({
 	routes,
 })
 
+router.beforeEach((to, from, next) => {
+	console.log(to, '去的地址')
+	console.log('from :>> ', from)
+	next()
+})
 export default router

@@ -21,7 +21,10 @@
 
 <script>
 import { ref } from 'vue'
+import { useRoute } from 'vue-router'
+
 import NavFooterItem from './NavFooterItem'
+
 export default {
 	props: {
 		navObj: {
@@ -30,7 +33,8 @@ export default {
 		},
 	},
 	setup() {
-		const colorIndex = ref(0)
+		const route = useRoute()
+		const colorIndex = ref(route.meta.index)
 		const ColorChange = (index) => {
 			colorIndex.value = index
 		}

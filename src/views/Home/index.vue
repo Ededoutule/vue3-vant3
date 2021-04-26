@@ -11,7 +11,6 @@
 					<img style="width: 100%" :src="image.image_url" />
 				</van-swipe-item>
 			</van-swipe>
-			<!-- {{ res }} -->
 		</div>
 		<transition name="van-slide-right">
 			<router-view></router-view>
@@ -36,10 +35,9 @@ export default {
 		let res = ref({})
 		const router = useRouter()
 		const color = ref('#222')
-		const searchValue = (value) => {
+		const searchValue = () => {
 			const rang = Math.floor(Math.random() * 10 - 2)
 			color.value = `#${rang}2${rang}`
-			console.log('搜索的值', value)
 		}
 		const goToPoput = () => {
 			router.push('/home/search')
@@ -51,6 +49,7 @@ export default {
 			res,
 			searchValue,
 			goToPoput,
+			color,
 		}
 	},
 	components: {
