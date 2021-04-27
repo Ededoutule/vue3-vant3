@@ -1,5 +1,6 @@
 const actions = {
 	getToke({ commit }) {
+		// return new Promise(()=)
 		commit('SetToken', 1)
 	},
 }

@@ -16,6 +16,12 @@ import {
 	Cell,
 	Lazyload,
 	Empty,
+	Grid,
+	GridItem,
+	Overlay,
+	Form,
+	Field,
+	Notify,
 } from 'vant'
 import { DropdownMenu, DropdownItem } from 'vant'
 import { PullRefresh } from 'vant'
@@ -40,5 +46,10 @@ app.use(Button)
 	.use(Sticky)
 	.use(Lazyload)
 	.use(Empty)
-
+	.use(Grid)
+	.use(GridItem)
+	.use(Overlay)
+	.use(Form)
+	.use(Field)
+	.use(Notify)
 app.use(store).use(router).use(Toast).mount('#app')

@@ -1,8 +1,9 @@
 import internal from '@/utils/require'
 
-export function Login() {
+export function Login(data) {
 	return internal({
-		url: '',
-		method: 'get',
+		url: '/auth/loginByWeb',
+		method: 'post',
+		data,
 	})
 }

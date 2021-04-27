@@ -1,5 +1,7 @@
 <template>
-	<router-view></router-view>
+	<keep-alive>
+		<router-view></router-view>
+	</keep-alive>
 	<NavFooter v-if="route.meta.show" :navObj="navObj"></NavFooter>
 </template>
 
