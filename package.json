@@ -11,11 +11,13 @@
     "axios": "^0.21.1",
     "core-js": "^3.6.5",
     "eslint-plugin-html": "^6.1.2",
+    "html2canvas": "^1.0.0-rc.7",
     "normalize.css": "^8.0.1",
     "save-dev": "0.0.1-security",
     "vant": "^3.0.13",
     "vue": "^3.0.0",
     "vue-router": "^4.0.0-0",
+    "vue-video-player": "^5.0.2",
     "vuex": "^4.0.0-0"
   },
   "devDependencies": {

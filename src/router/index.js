@@ -68,9 +68,9 @@ const router = createRouter({
 	routes,
 })
 
-router.beforeEach((to, from, next) => {
-	console.log(to, '去的地址')
-	console.log('from :>> ', from)
-	next()
-})
+// router.beforeEach((to, from, next) => {
+// 	console.log(to, '去的地址')
+// 	console.log('from :>> ', from)
+// 	next()
+// })
 export default router

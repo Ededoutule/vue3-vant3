@@ -50,9 +50,10 @@
 </template>
 
 <script>
-import { ref, reactive } from 'vue'
+import { ref, reactive, watch } from 'vue'
 import { Login } from '@/api/login'
 import { Notify } from 'vant'
+import { useRoute } from 'vue-router'
 export default {
 	setup() {
 		const state = reactive({
@@ -61,6 +62,12 @@ export default {
 			loading: false,
 		})
 		const show = ref(false)
+		const route = useRoute()
+		watch(route, (newVal) => {
+			console.log('new :>> ', newVal)
+			// console.log('old :>> ', oldVal)
+		})
+
 		const onSubmit = async () => {
 			try {
 				state.loading = true

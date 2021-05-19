@@ -70,7 +70,7 @@ export default {
 		z-index: 10;
 	}
 	.home {
-		// margin-top: 54px;
+		margin-top: 0px;
 	}
 }
 </style>
